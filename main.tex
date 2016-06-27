@@ -1,0 +1,83 @@
+\input{setup_packages.tex}
+\input{macros_common.tex}
+\input{macros.tex}
+\input{meta.tex}
+
+\usetheme[compress]{Dresden}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\doctitle}
+\subtitle{\docsubtitle}
+
+% \author[⟨short author names⟩]{⟨author names⟩}
+% The names should be separated using the command \and.
+\author[\docauthorshort]{\docauthor}
+
+\institute{\docinstitute}
+
+\date{\docdate}
+
+% \subject{⟨text⟩}
+% Enters the ⟨text⟩ as the subject text in the pdf document info.
+% It currently has no other effect.
+\subject{\docsubject}
+
+% \keywords{⟨text⟩}
+% Enters the ⟨text⟩ as keywords in the pdf document info.
+% It currently has no other effect. 
+\keywords{\dockeywords}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% SECTIONS %%%%%%%%
+
+\AtBeginSection[] {
+    \begin{frame}
+        \begin{center}
+            {\LARGE \textbf{\secname}}
+            %{\LARGE \insertsectionhead}
+        \end{center}
+    \end{frame}
+    \note{
+    }
+}
+
+%\AtBeginSection[] {
+%%   \begin{frame}<beamer>{Plan}
+%    \begin{frame}<beamer>
+%        \tableofcontents[currentsection]
+%%       \tableofcontents[currentsection,currentsubsection]
+%    \end{frame}
+%    \note{
+%    }
+%}
+
+% SUB SECTIONS %%%%
+
+%\AtBeginSubsection[] {
+%    \begin{frame}
+%        \begin{center}
+%            {\LARGE \insertsubsectionhead}
+%        \end{center}
+%    \end{frame}
+%    \note{
+%    }
+%}
+
+%\AtBeginSubsection[] {
+%    %\begin{frame}<beamer>{Plan}
+%    \begin{frame}<beamer>
+%        \tableofcontents[currentsection,currentsubsection]
+%    \end{frame}
+%    \note{
+%    }
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\input{content/main.tex}
+
+\end{document}

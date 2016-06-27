@@ -1,4 +1,4 @@
-slides.pdf
+.DS_Store
 *.aux
 *.bbl
 *.blg
@@ -11,3 +11,5 @@ slides.pdf
 *.snm
 *.toc
 *.vrb
+*.pdf
+!figs/*.pdf

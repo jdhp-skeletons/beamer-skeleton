@@ -1,37 +1,62 @@
-all: slides.pdf
+include meta.make
 
-## SLIDES ##
+###############################################################################
 
-SRCSLIDES=slides_packages.tex\
-		  commands.tex\
+all: $(NAME).pdf
+
+.PHONY : all clean init slides notes handout jdhp publish
+
+SRCSLIDES=macros_common.tex\
+		  macros.tex\
 		  bibliography.bib\
-		  setup_package_tikz.tex\
+		  setup_packages.tex\
 		  setup_package_listings.tex\
-		  slides_main.tex\
-		  slides_section_*.tex\
-		  slides_appendix.tex\
+		  setup_package_tikz.tex\
+		  main.tex\
+		  content/*.tex
+
 #SRCTIKZ=
 
-slides.pdf: $(SRCSLIDES) $(SRCTIKZ) slides.tex
-	pdflatex slides.tex
-	bibtex slides     # this is the name of the .aux file, not the .bib file !
-	pdflatex slides.tex
-	pdflatex slides.tex
+###############################################################################
 
-slides_handout.pdf: $(SRCSLIDES) $(SRCTIKZ) slides_handout.tex
-	pdflatex slides_handout.tex
-	#bibtex slides_handout     # this is the name of the .aux file, not the .bib file !
-	#pdflatex slides_handout.tex
-	pdflatex slides_handout.tex
+slides: $(NAME).pdf
 
-slides_notes.pdf: $(SRCSLIDES) $(SRCTIKZ) slides_notes.tex
-	pdflatex slides_notes.tex
-	#bibtex slides_notes     # this is the name of the .aux file, not the .bib file !
-	#pdflatex slides_notes.tex
-	pdflatex slides_notes.tex
+$(NAME).pdf: $(SRCSLIDES) $(SRCTIKZ) slides.tex
+	pdflatex -jobname=$(NAME) slides.tex
+	bibtex $(NAME)            # this is the name of the .aux file, not the .bib file !
+	pdflatex -jobname=$(NAME) slides.tex
+	pdflatex -jobname=$(NAME) slides.tex
+
+notes: $(NAME)_notes.pdf
+
+$(NAME)_notes.pdf: $(SRCSLIDES) $(SRCTIKZ) notes.tex
+	pdflatex -jobname=$(NAME)_notes notes.tex
+	#bibtex $(NAME)_notes      # this is the name of the .aux file, not the .bib file !
+	#pdflatex -jobname=$(NAME)_notes notes.tex
+	pdflatex -jobname=$(NAME)_notes notes.tex
+
+handout: $(NAME)_handout.pdf
+
+$(NAME)_handout.pdf: $(SRCSLIDES) $(SRCTIKZ) handout.tex
+	pdflatex -jobname=$(NAME)_handout handout.tex
+	#bibtex $(NAME)_handout    # this is the name of the .aux file, not the .bib file !
+	#pdflatex -jobname=$(NAME)_handout handout.tex
+	pdflatex -jobname=$(NAME)_handout handout.tex
+
+# PUBLISH #####################################################################
+
+publish: jdhp
+
+jdhp:$(NAME).pdf
+	# JDHP_DL_URI is a shell environment variable that contains the destination
+	# URI of the PDF files.
+	@if test -z $$JDHP_DL_URI ; then exit 1 ; fi
+	
+	# Upload the PDF file
+	rsync -v -e ssh $(NAME).pdf ${JDHP_DL_URI}/pdf/
 
 
-## CLEAN ##
+## CLEAN ######################################################################
 
 clean:
 	@echo "suppression des fichiers de compilation"
@@ -39,5 +64,6 @@ clean:
 
 init: clean
 	@echo "suppression des fichiers cibles"
-	@rm -f *.pdf
-	@rm -f *.ps
+	@rm -f $(NAME).pdf
+	@rm -f $(NAME)_notes.pdf
+	@rm -f $(NAME)_handout.pdf
