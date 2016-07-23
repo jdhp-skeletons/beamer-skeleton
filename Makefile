@@ -55,7 +55,6 @@ jdhp:$(NAME).pdf
 	# Upload the PDF file
 	rsync -v -e ssh $(NAME).pdf ${JDHP_DL_URI}/pdf/
 
-
 ## CLEAN ######################################################################
 
 clean:
