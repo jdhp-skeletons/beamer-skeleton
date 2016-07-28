@@ -15,7 +15,7 @@ SRCSLIDES=macros_common.tex\
 		  main.tex\
 		  content/*.tex
 
-#SRCTIKZ=
+SRCTIKZ=
 
 ###############################################################################
 
