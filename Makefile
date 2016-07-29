@@ -58,11 +58,11 @@ jdhp:$(FILE_BASE_NAME).pdf
 ## CLEAN ######################################################################
 
 clean:
-	@echo "suppression des fichiers de compilation"
+	@echo "Remove generated files"
 	@rm -f *.log *.aux *.dvi *.toc *.lot *.lof *.out *.nav *.snm *.bbl *.blg *.vrb
 
 init: clean
-	@echo "suppression des fichiers cibles"
+	@echo "Remove target files"
 	@rm -f $(FILE_BASE_NAME).pdf
 	@rm -f $(FILE_BASE_NAME)_notes.pdf
 	@rm -f $(FILE_BASE_NAME)_handout.pdf
