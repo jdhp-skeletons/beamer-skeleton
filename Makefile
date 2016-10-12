@@ -8,6 +8,7 @@ all: $(FILE_BASE_NAME).pdf
 
 SRCSLIDES=macros_common.tex\
 		  macros.tex\
+		  meta.tex\
 		  bibliography.bib\
 		  setup_packages.tex\
 		  setup_package_listings.tex\
