@@ -19,15 +19,22 @@ TODO_DOCUMENT_TITLE="TODO"                      # TODO
 TODO_DOCUMENT_SUBTITLE="TODO"                   # TODO
 TODO_DOCUMENT_FILE_BASE_NAME="TODO"             # TODO
 
-TODO_DOCUMENT_WEB_SITE_URL="http://www.jdhp.org/projects_en.html#${TODO_DOCUMENT_FILE_BASE_NAME}"
-TODO_DOCUMENT_HTML_URL="http://www.jdhp.org/docs/${TODO_DOCUMENT_FILE_BASE_NAME}/${TODO_DOCUMENT_FILE_BASE_NAME}.html"
-TODO_DOCUMENT_PDF_URL="http://www.jdhp.org/dl/pdf/${TODO_DOCUMENT_FILE_BASE_NAME}.pdf"
-
 TODO_DOCUMENT_GITHUB_ACCOUNT="jdhp-docs"        # TODO
 TODO_DOCUMENT_GITHUB_REPOSITORY_NAME="TODO"     # TODO
 
 TODO_DOCUMENT_GITHUB_URL="https://github.com/${TODO_DOCUMENT_GITHUB_ACCOUNT}/${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}"
 TODO_DOCUMENT_ISSUE_TRACKER_URL="https://github.com/${TODO_DOCUMENT_GITHUB_ACCOUNT}/${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}/issues"
+
+TODO_DOCUMENT_WEB_SITE_URL="http://www.jdhp.org/projects_en.html#${TODO_DOCUMENT_FILE_BASE_NAME}"
+TODO_DOCUMENT_HTML_URL="http://www.jdhp.org/docs/${TODO_DOCUMENT_FILE_BASE_NAME}/${TODO_DOCUMENT_FILE_BASE_NAME}.html"
+TODO_DOCUMENT_PDF_URL="http://www.jdhp.org/dl/pdf/${TODO_DOCUMENT_FILE_BASE_NAME}.pdf"
+
+
+# SETUP GIT ###################################################################
+
+git remote rename origin skeleton
+git remote add origin git@github.com:${TODO_DOCUMENT_GITHUB_ACCOUNT}/${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}.git
+git push -u origin english-version              # TODO
 
 
 # MAKE SUBSTITUTIONS ##########################################################
