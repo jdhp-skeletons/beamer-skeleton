@@ -25,7 +25,7 @@ TODO_DOCUMENT_GITHUB_REPOSITORY_NAME="TODO"     # TODO
 TODO_DOCUMENT_GITHUB_URL="https://github.com/${TODO_DOCUMENT_GITHUB_ACCOUNT}/${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}"
 TODO_DOCUMENT_ISSUE_TRACKER_URL="https://github.com/${TODO_DOCUMENT_GITHUB_ACCOUNT}/${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}/issues"
 
-TODO_DOCUMENT_WEB_SITE_URL="http://www.jdhp.org/docs_en.html#${TODO_DOCUMENT_FILE_BASE_NAME}"
+TODO_DOCUMENT_WEB_SITE_URL="http://www.jdhp.org/documentation_en.html#${TODO_DOCUMENT_FILE_BASE_NAME}"
 TODO_DOCUMENT_HTML_URL="http://www.jdhp.org/docs/${TODO_DOCUMENT_FILE_BASE_NAME}/${TODO_DOCUMENT_FILE_BASE_NAME}.html"
 TODO_DOCUMENT_PDF_URL="http://www.jdhp.org/dl/pdf/${TODO_DOCUMENT_FILE_BASE_NAME}.pdf"
 
@@ -35,6 +35,9 @@ TODO_DOCUMENT_PDF_URL="http://www.jdhp.org/dl/pdf/${TODO_DOCUMENT_FILE_BASE_NAME
 git remote rename origin skeleton
 git remote add origin git@github.com:${TODO_DOCUMENT_GITHUB_ACCOUNT}/${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}.git
 git push -u origin english-version              # TODO
+
+git submodule init
+git submodule update
 
 
 # MAKE SUBSTITUTIONS ##########################################################
@@ -59,7 +62,7 @@ sed -i "" \
     -e "s/TODO_DOCUMENT_GITHUB_REPOSITORY_NAME/${TODO_DOCUMENT_GITHUB_REPOSITORY_NAME}/g" \
     -e "s TODO_DOCUMENT_GITHUB_URL ${TODO_DOCUMENT_GITHUB_URL} g" \
     -e "s TODO_DOCUMENT_ISSUE_TRACKER_URL ${TODO_DOCUMENT_ISSUE_TRACKER_URL} g" \
-    AUTHORS meta.make meta.tex README.rst
+    AUTHORS meta.make .gitignore README.rst meta.tex
 
 
 # FIX TITLES UNDERLINE LENGTH IN RESTRUCTUREDTEXT FILES #######################
@@ -67,6 +70,6 @@ sed -i "" \
 DOCUMENT_TITLE_UNDERLINE=$(echo "${TODO_DOCUMENT_TITLE}" | tr '[:print:]' '=')
 
 sed -i "" \
-    -e "s/====/${DOCUMENT_TITLE_UNDERLINE}/" \
+    -e "s/^====$/${DOCUMENT_TITLE_UNDERLINE}/" \
     README.rst
 
