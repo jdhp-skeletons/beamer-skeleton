@@ -49,6 +49,23 @@ $(FILE_BASE_NAME)_handout.pdf: $(SRCSLIDES) $(SRCTIKZ) handout.tex
 publish: jdhp
 
 jdhp:$(FILE_BASE_NAME).pdf
+	
+	########
+	# HTML #
+	########
+	
+	# JDHP_DOCS_URI is a shell environment variable that contains the
+	# destination URI of the HTML files.
+	@if test -z $$JDHP_DOCS_URI ; then exit 1 ; fi
+	
+	# Copy HTML
+	# TODO...
+	
+	
+	#######
+	# PDF #
+	#######
+	
 	# JDHP_DL_URI is a shell environment variable that contains the destination
 	# URI of the PDF files.
 	@if test -z $$JDHP_DL_URI ; then exit 1 ; fi
