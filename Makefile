@@ -10,9 +10,7 @@ SRCSLIDES=macros_common.tex\
 		  macros.tex\
 		  meta.tex\
 		  bibliography.bib\
-		  setup_packages.tex\
-		  setup_package_listings.tex\
-		  setup_package_tikz.tex\
+		  setup_package*.tex\
 		  main.tex\
 		  content/*.tex
 
